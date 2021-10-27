@@ -2,6 +2,11 @@ html {
   body {
     font-size: 16px;
     letter-spacing: 0.3px;
+    //background-color: var(--main-color);
+
+    .toggleWrapper {
+      position: relative;
+    }
   }
 }
 
@@ -17,7 +22,7 @@ html {
   font-weight: normal;
   font-style: normal;
 }
-
+/*
 button {
   display: inline-block;
   cursor: pointer;
@@ -123,3 +128,4 @@ button {
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
 }
+*/

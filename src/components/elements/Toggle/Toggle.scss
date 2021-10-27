@@ -1,0 +1,23 @@
+.toggle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 30px;
+  width: 40px;
+  height: 20px;
+  position: relative;
+  margin: 0 15px;
+  cursor: pointer;
+  .ball {
+    background: linear-gradient(180deg, #45a6ff 0%, #9da5b4 100%), #c4c4c4;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(0);
+    transition: transform 0.1s ease;
+  }
+}

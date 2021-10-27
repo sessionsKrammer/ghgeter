@@ -19,7 +19,7 @@ module.exports = (env = {}) => {
   const getPlugins = () => {
     const plugins = [
       new HtmlWebpackPlugin({
-        title: "felocity",
+        title: "ghgeter",
         template: "public/index.html",
       }),
     ];
@@ -57,12 +57,12 @@ module.exports = (env = {}) => {
           use: [
             ...getStyleLoaders(),
             "sass-loader",
-            {
+            /*{
               loader: "sass-resources-loader",
               options: {
                 resources: ["./src/resources/vars.scss"],
               },
-            },
+            },*/
           ],
         },
 

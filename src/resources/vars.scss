@@ -1,4 +1,4 @@
-$main-color: #5776f6;
+/*$main-color: #5776f6;
 $accent-color: #eff2ff;
 $grey: #7f8285;
 $light-green: rgb(184, 248, 184);
@@ -25,4 +25,14 @@ $green: rgb(70, 243, 70);
   to {
     opacity: 1;
   }
+}
+*/
+
+html {
+  $main-color: #5776f6;
+  --main-color: brown;
+}
+
+html[data-theme="dark"] {
+  --main-color: rgb(209, 209, 91);
 }

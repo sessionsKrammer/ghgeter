@@ -1,15 +1,13 @@
 import React from "react";
 
-import { ServiceConsumer } from "../elements/service-provider";
+import { ServiceConsumer } from "../helpers/service-provider";
 
 const withData = (Wrapped: React.FC<any>) => {
   return (props: any) => (
     <ServiceConsumer>
-      {(service : any) => <Wrapped {...props} service={service} />}
+      {(service: any) => <Wrapped {...props} service={service} />}
     </ServiceConsumer>
   );
 };
-
-
 
 export { withData };
