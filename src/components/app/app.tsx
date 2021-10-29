@@ -1,19 +1,24 @@
 import React from "react";
 
-import "resources/reset.scss";
-import "resources/main.scss";
-import "resources/vars.scss";
+import { compose } from "utils";
 
-import Toggle from "components/elements/Toggle";
+import withBackground from "components/hoc/withBackground";
+import BG from "components/elements/Background/Background";
+
+//import Toggle from "components/elements/Toggle";
 
 const App = () => {
   return (
     <div className="app">
-      <div className="toggleWrapper">
-        <Toggle />
-      </div>
+      1
+      {
+        //Auth
+        //Switch
+        //Route - > RepoSearch
+        //Route - > RepoCabinet
+      }
     </div>
   );
 };
 
-export default App;
+export default compose(withBackground(BG))(App);
