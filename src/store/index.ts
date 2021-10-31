@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import { Dispatch, Store } from "redux";
+import { Dispatch } from "redux";
 
 import reducer from "store/reducers";
 
@@ -18,6 +18,6 @@ const stringMdw =
     return dispatch(action);
   };
 
-const store: Store = createStore(reducer, applyMiddleware(thunk, stringMdw));
+const store = createStore(reducer, applyMiddleware(thunk, stringMdw));
 
 export default store;

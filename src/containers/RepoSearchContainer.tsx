@@ -1,84 +1,47 @@
 import React, { useState, FC } from "react";
-import GitgubApolloService from "../services/githubApolloService";
-import { withData as withGithubApi } from "../components/hoc/withData";
-import { compose } from "../utils";
+import { connect } from "react-redux";
 
-interface SelectedRepo {
-  id: string;
-  title: string;
-}
+import { compose } from "utils";
 
-interface RepoSearchComponent {
-  input: string;
-  repoList: object[]; // comes from api
-  selectedRepo: SelectedRepo;
-  githubApi: GitgubApolloService;
-  fetching?: boolean;
-  status?: string;
-  onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onRepoClick: (id: string, title: string) => void;
-  onDeleteClick: () => void;
-  setRepoList: React.Dispatch<React.SetStateAction<never[]>>;
-  setStatus?: React.Dispatch<React.SetStateAction<string>>;
-  onFetchRepo?: (id: string) => void;
-}
+import { RepoSearchState, RepoItem, RepoSearchView } from "global";
 
-//Getting api service via hoc with Service Consumer
-const RepoSearchContainer = (Wrapped: FC<RepoSearchComponent>) =>
-  compose(withGithubApi)(
-    ({
-      service: githubApi,
-      onFetchRepo,
-    }: {
-      service: GitgubApolloService;
-      onFetchRepo: (id: string) => void;
-    }) => {
-      // Component's state
-      const [input, setInput] = useState("");
-      const [repoList, setRepoList] = useState([]);
-      const [selectedRepo, setSelectedRepo] = useState({
-        id: "",
-        title: "",
-      });
+const RepoSearchContainer = (Wrapped: FC<RepoSearchView>) =>
+  compose(connect(mapStateToProps, mapDispatchToProps))(() => {
+    const [state, setState] = useState<RepoSearchState>({
+      searchInput: "",
+      repoList: [],
+      selected: null,
+      fetching: false,
+      status: "",
+    });
 
-      //Component's events
-      const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        return setInput(e.target.value);
-      };
+    const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+      return setState({ ...state, searchInput: e.target.value });
+    };
 
-      const onRepoClick = (id: string, title: string) => {
-        setSelectedRepo({
-          id,
-          title,
-        });
-        setInput("");
-        setRepoList([]);
-      };
+    const onRepoSelect = (repo: RepoItem) =>
+      setState({ ...state, selected: repo, searchInput: "", repoList: [] });
 
-      const onDeleteClick = () => {
-        setSelectedRepo({
-          id: "",
-          title: "",
-        });
-      };
+    const onClear = () => setState({ ...state, selected: null });
 
-      //Props to the next hoc
-      const propsToWrapped: RepoSearchComponent = {
-        input,
-        repoList,
-        selectedRepo,
-        githubApi,
-        onChangeInput,
-        onRepoClick,
-        onDeleteClick,
-        setRepoList,
-        onFetchRepo,
-      };
+    const setStatus = (status: string) => setState({ ...state, status });
 
-      return <Wrapped {...propsToWrapped} />;
-    }
-  );
+    const propsToNext: RepoSearchView = {
+      ...state,
+      onChangeInput,
+      onRepoSelect,
+      onClear,
+      setStatus,
+      onFetchRepo: (id: string) => {},
+    };
+
+    return <Wrapped {...propsToNext} />;
+  });
+
+const mapStateToProps = (state: any) => ({});
+
+const mapDispatchToProps = (dispatch: any) => ({});
 
 export default RepoSearchContainer;
 
-export type { SelectedRepo, RepoSearchComponent };
+//export type { SelectedRepo, RepoSearchComponent };

@@ -1,0 +1,95 @@
+.RepoSearchWrapper {
+  display: flex;
+  height: 100vh;
+
+  .main {
+    margin: auto;
+    display: flex;
+    align-items: flex-end;
+    font-family: "oxygen", sans-serif;
+
+    .input-wrapper {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      label {
+        font-family: druk;
+        text-align: center;
+        margin-bottom: 18px;
+        letter-spacing: 1.2px;
+        font-size: 17px;
+      }
+
+      input {
+        width: 300px;
+      }
+    }
+
+    .selectedInput {
+      position: relative;
+      z-index: 999;
+      i {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+
+        &:hover {
+          color: rgb(211, 80, 48);
+        }
+      }
+    }
+
+    ul {
+      width: 300px;
+      position: absolute;
+      bottom: -6px;
+      transform: translateY(100%);
+      border: 1px solid $main-color;
+      border-radius: 6px;
+      overflow: hidden;
+      z-index: 999;
+      li {
+        padding: 7px 6px;
+        border-bottom: 1px solid $main-color;
+        background-color: #fff;
+        cursor: pointer;
+        transition: 0.5s ease;
+        overflow: hidden;
+        z-index: 888;
+        position: relative;
+        .owner {
+          position: absolute;
+          padding: 3px;
+          border: 1px solid black;
+          border-radius: 3px;
+          font-size: 14px;
+          top: 50%;
+          right: 5px;
+          z-index: 9999;
+          background-color: $light-green;
+          transform: translateY(-50%);
+          font-family: "montserrat";
+          font-weight: 500;
+        }
+      }
+
+      li:last-of-type {
+        border-bottom: none;
+      }
+
+      li:hover {
+        background-color: $accent-color;
+      }
+    }
+
+    button.btn {
+      position: absolute;
+      right: -60%;
+      bottom: 0;
+      height: 44px;
+      animation: fadein 0.9s ease;
+    }
+  }
+}

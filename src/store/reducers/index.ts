@@ -1,14 +1,17 @@
 import { combineReducers } from "redux";
-import { updateRepoCabinet } from "./repoCabinet";
+//import { updateRepoCabinet } from "./repoCabinet";
+import { updateApp, AppState } from "./app";
 
-import { RepoCabinet } from "../models/repoCabinet";
+//import { RepoCabinet } from "../models/repoCabinet";
 
 export interface State {
-  repoCabinet: RepoCabinet;
+  app: AppState;
+  //repoCabinet: RepoCabinet;
 }
 
 const reducer = combineReducers({
-  repoCabinet: updateRepoCabinet,
+  app: updateApp,
+  //repoCabinet: updateRepoCabinet,
 });
 
 export default reducer;

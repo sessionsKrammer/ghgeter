@@ -1,7 +1,18 @@
+import GithubApolloService from "services/githubApolloService";
+
 declare module "*.css";
 declare module "*.scss";
 declare module "*.json";
 declare module "*.svg";
+
+interface RepoItem {
+  id: string;
+  name: string;
+  nameWithOwner: string;
+  owner: {
+    login: string;
+  };
+}
 
 interface Repository {
   id: string;
@@ -43,4 +54,34 @@ interface IssueComment {
   };
 }
 
-export { Repository, Issue, IssueComment };
+interface RepoSearchState {
+  searchInput: string;
+  repoList: RepoItem[];
+  selected: RepoItem | null;
+  fetching: boolean;
+  status: string;
+}
+
+interface RepoSearchView extends RepoSearchState {
+  onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onRepoSelect: (repo: RepoItem) => void;
+  onClear: () => void;
+  setStatus: (status: string) => void;
+  onFetchRepo: (id: string) => void;
+}
+
+// store
+
+interface AppState {
+  apolloClient: GithubApolloService;
+}
+
+export {
+  Repository,
+  Issue,
+  IssueComment,
+  RepoSearchState,
+  RepoSearchView,
+  AppState,
+  RepoItem,
+};

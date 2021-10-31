@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Toggle.scss";
 
-const Toggle = () => {
+const Toggle = (props: any) => {
   const [theme, setTheme] = useState("default");
 
   const clickToggle = () => {
