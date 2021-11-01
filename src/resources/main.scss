@@ -22,7 +22,21 @@ html {
   font-weight: normal;
   font-style: normal;
 }
-/*
+
+@font-face {
+  font-family: "oxygen";
+  src: url("./fonts/Oxygen-Light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "druk";
+  src: url("./fonts/DrukWideMedium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 button {
   display: inline-block;
   cursor: pointer;
@@ -41,14 +55,14 @@ button {
   max-width: 312px;
 
   padding: 9px 24px;
-  background-color: $main-color;
+  background-color: var(--main-color);
   color: #ffff;
 
-  border: 1px solid $main-color;
+  border: 1px solid var(--main-color);
   border-radius: 4px;
 
   &:hover {
-    background: darken($main-color, 5%);
+    background: var(--main-color-focus);
   }
 }
 
@@ -56,6 +70,33 @@ button {
   outline: none;
 }
 
+input {
+  border: 1px solid var(--grey);
+  border-radius: 6px;
+  padding: 12px;
+  height: 44px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  transition: all 0.3s ease;
+  outline: none;
+  position: relative;
+
+  &:focus,
+  &:hover {
+    border-color: var(--main-color);
+    background-color: var(--accent-color);
+  }
+}
+
+.btn--medium {
+  font-size: 15px;
+  letter-spacing: 0.2px;
+  padding: 7px 15px;
+}
+/*
 .statusWrapper {
   width: 300px;
   min-height: 50px;

@@ -6,8 +6,7 @@ import { compose } from "utils";
 import withBackground from "components/hoc/withBackground";
 import BG from "components/elements/Background/Background";
 
-import Toggle from "components/elements/Toggle";
-import RepoSearchContainer from "containers/RepoSearchContainer";
+import RepoSearch from "components/RepoSearch";
 
 const App = () => {
   return (
@@ -19,7 +18,9 @@ const App = () => {
         //Route - > RepoCabinet
       }
       <Switch>
-        <Route exact path="/"></Route>
+        <Route exact path="/">
+          <RepoSearch />
+        </Route>
       </Switch>
     </div>
   );

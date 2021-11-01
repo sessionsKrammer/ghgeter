@@ -26,13 +26,15 @@ const RepoSearch = ({
           <div className="selectedInput">
             <input
               type="text"
-              value={selected.id ? selected.title : searchInput}
-              onChange={!selected.id ? onChangeInput : () => {}}
+              value={selected ? selected.nameWithOwner : searchInput}
+              {...(!selected && { onChange: onChangeInput })}
             />
             <i
               className="fas fa-times"
               onClick={onClear}
-              style={{ visibility: selected.id ? "visible" : "hidden" }}
+              style={{
+                visibility: selected && selected.id ? "visible" : "hidden",
+              }}
             ></i>
           </div>
           <ul
@@ -62,8 +64,8 @@ const RepoSearch = ({
           </ul>
           <button
             className="btn btn--medium"
-            style={{ display: selected.id ? "inline-block" : "none" }}
-            onClick={() => onFetchRepo!(selected.id)}
+            style={{ display: selected ? "inline-block" : "none" }}
+            {...(selected && { onClick: () => onFetchRepo(selected.id) })}
           >
             Select Repository
           </button>
