@@ -4,6 +4,9 @@ import FetchStatus from "components/helpers/fetchStatus";
 
 import { RepoSearchView, RepoItem } from "global";
 
+import { compose } from "utils";
+import withInputFetch from "components/hoc/withInputFetch";
+
 import "./RepoSearch.scss";
 
 const RepoSearch = ({
@@ -75,4 +78,7 @@ const RepoSearch = ({
   );
 };
 
-export default RepoSearchContainer(RepoSearch);
+export default compose<RepoSearchView>(
+  RepoSearchContainer,
+  withInputFetch
+)(RepoSearch);

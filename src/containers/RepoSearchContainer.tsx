@@ -43,5 +43,3 @@ const mapStateToProps = (state: any) => ({});
 const mapDispatchToProps = (dispatch: any) => ({});
 
 export default RepoSearchContainer;
-
-//export type { SelectedRepo, RepoSearchComponent };
